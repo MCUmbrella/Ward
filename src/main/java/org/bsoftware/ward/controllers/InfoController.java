@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * InfoController displays responses from rest API
- *
  * @author Rudolf Barbu
  * @version 1.0.1
  */
@@ -27,7 +26,6 @@ public class InfoController
 
     /**
      * Get request to display current usage information for processor, RAM and storage
-     *
      * @return ResponseEntity to servlet
      */
     @GetMapping

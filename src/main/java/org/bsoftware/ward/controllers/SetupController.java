@@ -5,12 +5,14 @@ import org.bsoftware.ward.services.SetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * SetupController displays responses from rest API
- *
  * @author Rudolf Barbu
  * @version 1.0.1
  */
@@ -27,12 +29,11 @@ public class SetupController
 
     /**
      * Posting setup info in database
-     *
      * @param setupDto dto with data
      * @return ResponseEntity to servlet
      */
     @PostMapping
-    public ResponseEntity<?> postSetup(@RequestBody @Valid SetupDto setupDto) throws Exception
+    public ResponseEntity<?> postSetup(@RequestBody @Validated SetupDto setupDto) throws Exception
     {
         return new ResponseEntity<>(setupService.postSetup(setupDto), HttpStatus.OK);
     }

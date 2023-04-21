@@ -1,14 +1,13 @@
 package org.bsoftware.ward.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.*;
 
 /**
  * SetupDto is a values container for setup data
- *
  * @author Rudolf Barbu
  * @version 1.0.3
  */

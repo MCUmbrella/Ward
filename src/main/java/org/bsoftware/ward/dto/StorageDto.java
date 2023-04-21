@@ -5,7 +5,6 @@ import lombok.Setter;
 
 /**
  * StorageDto is a values container for presenting storage principal information
- *
  * @author Rudolf Barbu
  * @version 1.0.0
  */

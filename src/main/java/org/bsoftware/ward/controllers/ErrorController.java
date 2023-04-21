@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * ErrorController displays error pages of Ward application
- *
  * @author Rudolf Barbu
  * @version 1.0.2
  */
@@ -26,23 +25,11 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 
     /**
      * Get request to display error page, which corresponds status code
-     *
      * @return String name of html template
      */
     @GetMapping
     public String getError(Model model) throws Exception
     {
         return errorService.getError(model);
-    }
-
-    /**
-     * Returns error path
-     *
-     * @return String error path
-     */
-    @Override
-    public String getErrorPath()
-    {
-        return "/error";
     }
 }

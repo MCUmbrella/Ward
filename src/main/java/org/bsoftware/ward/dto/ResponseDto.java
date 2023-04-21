@@ -4,7 +4,6 @@ import lombok.Getter;
 
 /**
  * ResponseDto is a values container for presenting response info
- *
  * @author Rudolf Barbu
  * @version 1.0.0
  */
@@ -18,7 +17,6 @@ public final class ResponseDto
 
     /**
      * Setter for message field
-     *
      * @param message message to display
      */
     public ResponseDto(String message)

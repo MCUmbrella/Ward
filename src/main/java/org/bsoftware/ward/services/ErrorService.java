@@ -5,11 +5,11 @@ import org.bsoftware.ward.components.UtilitiesComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
 import java.io.IOException;
 
 /**
  * ErrorService displays error pages of Ward application
- *
  * @author Rudolf Barbu
  * @version 1.0.1
  */
@@ -25,14 +25,13 @@ public class ErrorService
 
     /**
      * Returns 404 error page
-     *
      * @param model container for strings
      * @return template name
      * @throws IOException if ini file is unreachable
      */
     public String getError(Model model) throws IOException
     {
-        if (Ward.isFirstLaunch())
+        if(Ward.isFirstLaunch())
         {
             return "setup";
         }

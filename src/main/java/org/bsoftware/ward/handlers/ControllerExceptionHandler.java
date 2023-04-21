@@ -13,11 +13,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.io.IOException;
 
 /**
  * ControllerExceptionHandler is standard exception handler for rest api, and white labels
- *
  * @author Rudolf Barbu
  * @version 1.0.0
  */
@@ -54,7 +54,6 @@ public class ControllerExceptionHandler
 
     /**
      * Handles all other servlet exceptions, which were not handled by others handlers
-     *
      * @throws IOException if ini file is unreachable
      */
     @ExceptionHandler(value = Exception.class)

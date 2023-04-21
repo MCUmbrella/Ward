@@ -11,11 +11,11 @@ import oshi.hardware.GlobalMemory;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 import oshi.util.Util;
+
 import java.util.Arrays;
 
 /**
  * UsageService provides principal information of processor, RAM and storage usage to rest controller
- *
  * @author Rudolf Barbu
  * @version 1.0.3
  */
@@ -31,7 +31,6 @@ public class UsageService
 
     /**
      * Gets processor usage
-     *
      * @return int that display processor usage
      */
     private int getProcessor()
@@ -53,7 +52,6 @@ public class UsageService
 
     /**
      * Gets ram usage
-     *
      * @return int that display ram usage
      */
     private int getRam()
@@ -68,7 +66,6 @@ public class UsageService
 
     /**
      * Gets storage usage
-     *
      * @return int that display storage usage
      */
     private int getStorage()
@@ -83,12 +80,11 @@ public class UsageService
 
     /**
      * Used to deliver dto to corresponding controller
-     *
      * @return ResponseEntityWrapperAsset filled with usageDto
      */
     public UsageDto getUsage() throws ApplicationNotSetUpException
     {
-        if (!Ward.isFirstLaunch())
+        if(!Ward.isFirstLaunch())
         {
             UsageDto usageDto = new UsageDto();
 

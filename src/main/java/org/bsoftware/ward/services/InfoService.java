@@ -7,16 +7,22 @@ import org.bsoftware.ward.exceptions.ApplicationNotSetUpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import oshi.SystemInfo;
-import oshi.hardware.*;
+import oshi.hardware.CentralProcessor;
+import oshi.hardware.GlobalMemory;
+import oshi.hardware.HWDiskStore;
+import oshi.hardware.PhysicalMemory;
 import oshi.software.os.OperatingSystem;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
 
 /**
  * InfoService provides various information about machine, such as processor name, core count, Ram amount, etc.
- *
  * @author Rudolf Barbu
  * @version 1.0.2
  */
@@ -39,7 +45,6 @@ public class InfoService
 
     /**
      * Converts frequency to most readable format
-     *
      * @param hertzArray raw frequency array values in hertz for each logical processor
      * @return String with formatted frequency and postfix
      */
@@ -48,7 +53,7 @@ public class InfoService
         long totalFrequency = Arrays.stream(hertzArray).sum();
         long hertz = totalFrequency / hertzArray.length;
 
-        if ((hertz / 1E+6) > 999)
+        if((hertz / 1E+6) > 999)
         {
             return (Math.round((hertz / 1E+9) * 10.0) / 10.0) + " GHz";
         }
@@ -60,15 +65,14 @@ public class InfoService
 
     /**
      * Converts capacity to most readable format
-     *
      * @param bits raw capacity value in bits
      * @return String with formatted capacity and postfix
      */
     private String getConvertedCapacity(long bits)
     {
-        if ((bits / 1.049E+6) > 999)
+        if((bits / 1.049E+6) > 999)
         {
-            if ((bits / 1.074E+9) > 999)
+            if((bits / 1.074E+9) > 999)
             {
                 return (Math.round((bits / 1.1E+12) * 10.0) / 10.0) + " TiB";
             }
@@ -85,7 +89,6 @@ public class InfoService
 
     /**
      * Gets processor information
-     *
      * @return ProcessorDto with filled fields
      */
     private ProcessorDto getProcessor()
@@ -95,7 +98,7 @@ public class InfoService
         CentralProcessor centralProcessor = systemInfo.getHardware().getProcessor();
 
         String name = centralProcessor.getProcessorIdentifier().getName();
-        if (name.contains("@"))
+        if(name.contains("@"))
         {
             name = name.substring(0, name.indexOf('@') - 1);
         }
@@ -113,7 +116,6 @@ public class InfoService
 
     /**
      * Gets machine information
-     *
      * @return MachineDto with filled fields
      */
     private MachineDto getMachine()
@@ -128,7 +130,7 @@ public class InfoService
         machineDto.setTotalRam(getConvertedCapacity(globalMemory.getTotal()) + " Ram");
 
         Optional<PhysicalMemory> physicalMemoryOptional = globalMemory.getPhysicalMemory().stream().findFirst();
-        if (physicalMemoryOptional.isPresent())
+        if(physicalMemoryOptional.isPresent())
         {
             machineDto.setRamTypeOrOSBitDepth(physicalMemoryOptional.get().getMemoryType());
         }
@@ -145,7 +147,6 @@ public class InfoService
 
     /**
      * Gets storage information
-     *
      * @return StorageDto with filled fields
      */
     private StorageDto getStorage()
@@ -156,11 +157,11 @@ public class InfoService
         GlobalMemory globalMemory = systemInfo.getHardware().getMemory();
 
         Optional<HWDiskStore> hwDiskStoreOptional = hwDiskStores.stream().findFirst();
-        if (hwDiskStoreOptional.isPresent())
+        if(hwDiskStoreOptional.isPresent())
         {
             String mainStorage = hwDiskStoreOptional.get().getModel();
 
-            if (mainStorage.contains("(Standard disk drives)"))
+            if(mainStorage.contains("(Standard disk drives)"))
             {
                 mainStorage = mainStorage.substring(0, mainStorage.indexOf("(Standard disk drives)") - 1);
             }
@@ -185,7 +186,6 @@ public class InfoService
 
     /**
      * Gets uptime information
-     *
      * @return UptimeDto with filled fields
      */
     @SuppressWarnings(value = "IntegerDivisionInFloatingPointContext")
@@ -205,7 +205,6 @@ public class InfoService
 
     /**
      * Gets server name information
-     *
      * @return SetupDto with filled field
      * @throws IOException if file does not exists
      */
@@ -221,7 +220,6 @@ public class InfoService
 
     /**
      * Gets project version information
-     *
      * @return MavenDto with filled field
      * @throws IOException if file does not exists
      */
@@ -231,7 +229,7 @@ public class InfoService
         Properties properties = new Properties();
         InputStream inputStream = getClass().getResourceAsStream("/META-INF/maven/org.b-software/ward/pom.properties");
 
-        if (inputStream != null)
+        if(inputStream != null)
         {
             properties.load(inputStream);
             String version = properties.getProperty("version");
@@ -248,12 +246,11 @@ public class InfoService
 
     /**
      * Used to deliver dto to corresponding controller
-     *
      * @return InfoDto filled with server info
      */
     public InfoDto getInfo() throws Exception
     {
-        if (!Ward.isFirstLaunch())
+        if(!Ward.isFirstLaunch())
         {
             InfoDto infoDto = new InfoDto();
 

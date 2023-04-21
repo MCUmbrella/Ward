@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 
 /**
  * IndexService displays index page of Ward application
- *
  * @author Rudolf Barbu
  * @version 1.0.1
  */
@@ -31,13 +30,12 @@ public class IndexService
 
     /**
      * Fills model and returns template name
-     *
      * @param model strings container
      * @return template name
      */
     public String getIndex(Model model) throws Exception
     {
-        if (Ward.isFirstLaunch())
+        if(Ward.isFirstLaunch())
         {
             return "setup";
         }

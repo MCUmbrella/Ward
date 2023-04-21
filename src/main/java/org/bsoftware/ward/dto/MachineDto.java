@@ -5,7 +5,6 @@ import lombok.Setter;
 
 /**
  * MachineDto is a values container for presenting machine principal information
- *
  * @author Rudolf Barbu
  * @version 1.0.0
  */

@@ -6,7 +6,6 @@ import oshi.SystemInfo;
 
 /**
  * BeanConfiguration provides bean configuration for classes, which are not components
- *
  * @author Rudolf Barbu
  * @version 1.0.2
  */

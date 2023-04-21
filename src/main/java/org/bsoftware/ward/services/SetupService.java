@@ -5,12 +5,12 @@ import org.bsoftware.ward.dto.ResponseDto;
 import org.bsoftware.ward.dto.SetupDto;
 import org.ini4j.Ini;
 import org.springframework.stereotype.Service;
+
 import java.io.File;
 import java.io.IOException;
 
 /**
  * SetupService manipulating setup data
- *
  * @author Rudolf Barbu
  * @version 1.0.2
  */
@@ -19,7 +19,6 @@ public class SetupService
 {
     /**
      * Puts new data in ini file
-     *
      * @param file ini file
      * @param sectionName section in ini file
      * @param optionName option in section
@@ -38,14 +37,13 @@ public class SetupService
 
     /**
      * Fills setup data in ini file
-     *
      * @param setupDto user settings data
      * @return ResponseEntityWrapperAsset filled with ResponseDto
      * @throws Exception IoException if file is fot found, and cant be created
      */
     public ResponseDto postSetup(SetupDto setupDto) throws Exception
     {
-        if (Ward.isFirstLaunch())
+        if(Ward.isFirstLaunch())
         {
             File file = new File(Ward.SETUP_FILE_PATH);
 

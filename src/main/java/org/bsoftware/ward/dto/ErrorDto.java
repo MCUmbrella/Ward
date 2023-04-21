@@ -1,11 +1,11 @@
 package org.bsoftware.ward.dto;
 
 import lombok.Getter;
+
 import java.time.LocalDateTime;
 
 /**
  * ErrorDto is a container for error response
- *
  * @author Rudolf Barbu
  * @version 1.0.1
  */
@@ -13,23 +13,22 @@ import java.time.LocalDateTime;
 public final class ErrorDto
 {
     /**
-     *  Error timestamp field
+     * Error timestamp field
      */
     private final String timestamp = LocalDateTime.now().toString();
 
     /**
-     *  Error message field
+     * Error message field
      */
     private final String errMessage;
 
     /**
-     *  Exception name field
+     * Exception name field
      */
     private final String exceptionName;
 
     /**
      * Setter for errMessage and exceptionName fields
-     *
      * @param exception thrown exception
      */
     public ErrorDto(Exception exception)

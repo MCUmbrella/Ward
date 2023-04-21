@@ -5,7 +5,6 @@ import lombok.Setter;
 
 /**
  * UsageDto is a values container for presenting server usage
- *
  * @author Rudolf Barbu
  * @version 1.0.1
  */

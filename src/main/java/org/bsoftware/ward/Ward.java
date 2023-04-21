@@ -6,11 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+
 import java.io.File;
 
 /**
  * Ward is a Spring Boot application class
- *
  * @author Rudolf Barbu
  * @version 1.0.4
  */
@@ -40,7 +40,6 @@ public class Ward extends SpringBootServletInitializer
 
     /**
      * Entry point of Ward application
-     *
      * @param args Spring Boot application arguments
      */
     public static void main(String[] args)
@@ -49,7 +48,7 @@ public class Ward extends SpringBootServletInitializer
         configurableApplicationContext = SpringApplication.run(Ward.class, args);
 
         File setupFile = new File(Ward.SETUP_FILE_PATH);
-        if (setupFile.exists())
+        if(setupFile.exists())
         {
             restart();
         }

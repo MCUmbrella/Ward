@@ -3,6 +3,7 @@ package org.bsoftware.ward.components;
 import org.bsoftware.ward.Ward;
 import org.ini4j.Ini;
 import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -16,7 +17,6 @@ public class UtilitiesComponent
 {
     /**
      * Gets string data from ini file
-     *
      * @param file ini file
      * @param sectionName section in ini filr
      * @param optionName option in section
@@ -26,7 +26,7 @@ public class UtilitiesComponent
     @SuppressWarnings(value = "MismatchedQueryAndUpdateOfCollection")
     public String getFromIniFile(File file, String sectionName, String optionName) throws IOException
     {
-        if (file.exists())
+        if(file.exists())
         {
             Ini ini = new Ini(file);
 
@@ -38,7 +38,6 @@ public class UtilitiesComponent
 
     /**
      * Gets theme name from setup ini file
-     *
      * @return String wth theme name
      * @throws IOException if file does not exists
      */

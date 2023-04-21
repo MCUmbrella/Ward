@@ -11,14 +11,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.0</version>
+        <version>3.0.5</version>
     </parent>
 
     <!-- project properties -->
     <properties>
-        <oshiVersion>5.3.6</oshiVersion>
-        <jnaVersion>5.6.0</jnaVersion>
-        <lombokVersion>1.18.16</lombokVersion>
+        <oshiVersion>6.4.0</oshiVersion>
+        <jnaVersion>5.12.1</jnaVersion>
+        <lombokVersion>1.18.26</lombokVersion>
         <ini4jVersion>0.5.4</ini4jVersion>
     </properties>
 
@@ -31,6 +31,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>3.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
